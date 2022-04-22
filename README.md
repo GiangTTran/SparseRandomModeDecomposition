@@ -34,8 +34,8 @@ solving the associated Basic Pursuit Denoising Problem (BPDP) using the SPGL1
 algorithm. And the clustering is performed by scikit-learn's implimentation of
 the DBSCAN algorithm.
 
-Given a time series y=[y1, ..., ym] sampled at time points t=[t1, ..., tm],
-SRMD recovers the modes s1, ..., sK and possibly denoise the input signal where
+Given a time series ```y=[y1, ..., ym]``` sampled at time points ```t=[t1, ..., tm],```
+SRMD recovers the modes ```s1, ..., sK``` and possibly denoise the input signal where
 
 ```y(t) = s1(t) + s2(t) + ... + sK(t) + noise.```
 
