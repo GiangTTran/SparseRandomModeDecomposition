@@ -1,0 +1,6 @@
+numpy>=1.18.5,<1.22
+spgl1>=0.0.2
+scikit-learn>=1.0.2
+seaborn>=0.11.2
+matplotlib>=3.2.2
+scipy<1.8
