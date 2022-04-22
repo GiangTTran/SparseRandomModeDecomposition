@@ -37,7 +37,7 @@ the DBSCAN algorithm.
 Given a time series y=[y1, ..., ym] sampled at time points t=[t1, ..., tm],
 SRMD recovers the modes s1, ..., sK and possibly denoise the input signal where
 
-y(t) = s1(t) + s2(t) + ... + sK(t) + noise.
+```y(t) = s1(t) + s2(t) + ... + sK(t) + noise.```
 
 This method is most effective when the modes sk(t) occupy connected curves
 or regions that are mutualy disjoint in time-frequency space such as
@@ -46,16 +46,16 @@ non-intersecting intrinsic mode functions.
 Specificly, SRMD(y, ...) first solves the problem of representing a time-series
 y as a sum of random features
 
-y(t) ~ sum_j(c_j * exp(-0.5 * ((t-tau_j)/w)^2) * sin(2*pi*frq_j*t + phs_j)),
+```y(t) ~ sum_j(c_j * exp(-0.5 * ((t-tau_j)/w)^2) * sin(2*pi*frq_j*t + phs_j)),```
 
 where the learned weights vector c is sparse, by solving BPDN
 
-argmin ||c||_1 s.t. ||Ac - y||_2 < r*||y||_2.
+```argmin ||c||_1 s.t. ||Ac - y||_2 < r*||y||_2.```
 
-Here, (A)_ij = exp(-0.5 * ((t_i-tau_j)/w)^2) * sin(2*pi*frq_j*t_i + phs_j).
+Here, ```(A)_ij = exp(-0.5 * ((t_i-tau_j)/w)^2) * sin(2*pi*frq_j*t_i + phs_j).```
 
 The features are clustered with DBSCAN which groups features with near-by
-(tau_j, frq_j*frq_scale) in terms of their l2 distance to each other.
+```(tau_j, frq_j*frq_scale)``` in terms of their l2 distance to each other.
 
 ## About
 
