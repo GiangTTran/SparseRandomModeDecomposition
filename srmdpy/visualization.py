@@ -22,6 +22,7 @@ __all__ = ['signal',
            'modes_with_cluster',
            'weights']
 
+import numpy as np
 import seaborn as sns
 import matplotlib
 import matplotlib.pyplot as plt
