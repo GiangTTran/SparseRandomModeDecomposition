@@ -35,7 +35,7 @@ def make_colours(n):
     """
     if n <= 4:
         cp = sns.color_palette("colorblind")
-        colours = cp[1:3] + cp[4:5] + [cp[-1]] # give preference to these colours
+        colours = cp[1:3] + cp[4:5] + cp[0:1] # give preference to these colours
     elif n <= 10:
         colours = sns.color_palette("colorblind")
     else:
