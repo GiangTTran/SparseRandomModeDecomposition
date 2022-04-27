@@ -72,6 +72,10 @@ def modes_with_cluster(t, modes, tau, frq, labels, **kargs):
     The learned time shifts and frequencies are plotted so each cluster has a
     unique colour. The recovered modes from each cluster are plotted with the
     same colour as the cluster.
+    
+    See top right plot of Figure 1 of SRMD paper for an example of the time-
+    frequency clusters, and the middle row in Figure 1 for an example of
+    plotting the modes with matching colours.
     """
     n_modes = modes.shape[1]
     colours = make_colours(n_modes)
@@ -102,6 +106,8 @@ def weights(tau, frq, weights, labels=None, title=None, **kargs):
     If labels are given, features that were labeled -1 (outliers) will be
     ignored. Lines and curves should reveal the instentaneous frequency of the
     input signal.
+    
+    See top left plot of Figure 1 in SRMD paper for an example.
     """
     kargs['cmap'] = sns.color_palette('crest', as_cmap=True) #'viridis'
     kargs['norm'] = matplotlib.colors.LogNorm()
