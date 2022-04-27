@@ -77,7 +77,8 @@ def modes_with_cluster(t, modes, tau, frq, labels, **kargs):
     colours = make_colours(n_modes)
 
     fig = plt.figure()
-    for l in set(labels):
+    set_of_labels = set(labels)
+    for l in set_of_labels:
         if l == -1:
             continue
         mode_index = np.equal(labels, l)
@@ -90,7 +91,7 @@ def modes_with_cluster(t, modes, tau, frq, labels, **kargs):
     plt.ylabel('frequency')
     plt.show()
 
-    for l in set(labels):
+    for l in set_of_labels:
         if l == -1:
             continue
         signal(t, modes[:,l], title=f'Learned Mode {l+1}', c=colours[l])
