@@ -7,7 +7,7 @@ SRMD(y, t):
     connected in time-frequency space, and mutualy disjoint from each other.
 """
 
-__all__ = ['SRMD', 'generate_features', 'window']
+__all__ = ['SRMD']
 
 import logging
 
