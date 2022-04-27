@@ -24,9 +24,10 @@ or downloading the source by clicking `Code -> Download ZIP`, and then installed
 ## The Algorithm
 
 The algorithm can be broken into three main steps:
-    1. Randomly generate many time-frequency features
-    2. Find a sparse representation of the input in these features
-    3. Cluster near-by features into modes
+    
+1. Randomly generate many time-frequency features
+2. Find a sparse representation of the input with respect to the random features
+3. Cluster near-by features into modes
 
 The features used are (Gaussian) windowed sinusoids with random phases, although
 any wavelet-like feature could be used. The sparse representation is found by
@@ -56,6 +57,77 @@ Here, ```(A)_ij = exp(-0.5 * ((t_i-tau_j)/w)^2) * sin(2*pi*frq_j*t_i + phs_j).``
 
 The features are clustered with DBSCAN which groups features with near-by
 ```(tau_j, frq_j*frq_scale)``` in terms of their l2 distance to each other.
+
+## ```srmdpy``` File Overview
+
+srmdpy.py:
+```
+SRMD(y, t):
+    Decomposes a time series y(t) = sum_k s_k(t) into modes s_k(t) that are well
+    connected in time-frequency space, and mutualy disjoint from each other.
+```
+    
+utils.py: 
+Hosts the helper functions for generating the features used by SRMD
+```
+generate_features(N, t):
+    Generates N random features on the time points t.
+    
+window(t, w):
+    Creates a Gaussian window function of width w on the time points t.
+```
+
+visualization.py:
+Contains useful plotting functions for visualizating decomposition results.
+```
+signal(t, y):
+    Plots a time series y sampled at time points t.
+    
+all_modes(t, modes):
+    Plots each mode_i = modes[:, i] sampeled at t.
+    
+modes_with_cluster(t, modes, tau, frq, labels):
+    Plots each mode_i and the time-frequency pairs (tau_n, frq_n) coloured
+    according to labels.
+    
+weights(tau, frq, weights):
+    Creates a spectrogram-like plot where time-frequency pairs (tau_n, frq_n)
+    are coloured accoring to weights_n.
+```
+
+constants.py:
+Store helpful constants and default values used by SRMD and helper functions.
+```
+twopi = 2 * pi
+default_w = 0.1
+default_r = 0.05
+default_min_samples = 4
+```
+## ```examples``` File Overview
+
+minimal.ipynb:
+Decomposes a composite signal with two pure sinusoids at 5 Hz and 20 Hz into its two modes.
+
+frequency_estimation.ipynb:
+
+graviational.ipynb:
+
+music.ipynb:
+use SRMD_music()
+
+discontinuous.ipynb:
+
+intersecting.ipynb:
+Show all the hyperparameters
+
+## ```data``` Files
+synthetic_data.py:
+Creates the synthetic data from the SRMD paper
+
+music:
+flute.wav, guitar.wav, both.wav
+
+gravitational?:
 
 ## About
 
