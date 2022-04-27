@@ -58,8 +58,8 @@ Here, ```(A)_ij = exp(-0.5 * ((t_i-tau_j)/w)^2) * sin(2*pi*frq_j*t_i + phs_j).``
 The features are clustered with DBSCAN which groups features with near-by
 ```(tau_j, frq_j*frq_scale)``` in terms of their l2 distance to each other.
 
-## ```srmdpy``` File Overview
-
+## File Overview
+###  ```srmdpy/```
 srmdpy.py:
 ```
 SRMD(y, t):
@@ -103,7 +103,7 @@ default_w = 0.1
 default_r = 0.05
 default_min_samples = 4
 ```
-## ```examples``` File Overview
+### ```examples/```
 
 minimal.ipynb:
 Decomposes a composite signal with two pure sinusoids at 5 Hz and 20 Hz into its two modes.
@@ -120,7 +120,7 @@ discontinuous.ipynb:
 intersecting.ipynb:
 Show all the hyperparameters
 
-## ```data``` Files
+### ```data/```
 synthetic_data.py:
 Creates the synthetic data from the SRMD paper
 
