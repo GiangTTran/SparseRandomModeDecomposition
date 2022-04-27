@@ -123,10 +123,10 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     >>> y = np.cos(2*np.pi*5*t) + np.sin(2*np.pi*20*t)
     >>> kargs = {'eps':1, 'frq_scale':1, 'seed':314}
     >>> modes = SRMD(y, t, **kargs)
-    >>> for i in range(modes.shape[1])
+    >>> for i in range(modes.shape[1]):
     >>>     mode_i = modes[:,i]
     >>>     plt.figure(i)
-    >>>     plt.plot(t,mode_i)
+    >>>     plt.title(f'Mode {i+1}')
     """
     # Verbosity handeling
     if verbosity == 2:
