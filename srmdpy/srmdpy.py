@@ -243,7 +243,7 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     modes[:,sort_order]
 
     # Relabel features to match new order
-    re_label = {k:v for k, v in enumerate(sort_order)}
+    re_label = {k:v for v, k in enumerate(sort_order)}
     re_label[-1] = -1
     labels = np.array([re_label[l] for l in labels])
 
