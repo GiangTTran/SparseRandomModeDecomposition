@@ -251,6 +251,7 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     if n_modes and n_labels > n_modes:
         modes = np.hstack((modes[:,:n_modes-1],
                     np.sum(modes[:,n_modes-1:], axis=1, keepdims=True)))
+        labels = np.array([(l if l < n_modes else n_modes - 1) for l in labels])
 
     if return_features:
         return modes, (tau, frq, phs), weights, labels
