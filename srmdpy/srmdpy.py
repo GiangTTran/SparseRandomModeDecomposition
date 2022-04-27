@@ -240,7 +240,7 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     # Sort modes by their norm in decreasing order
     norms = np.linalg.norm(modes, axis=0)
     sort_order = np.argsort(norms)[::-1]
-    modes[:,sort_order]
+    modes = modes[:,sort_order]
 
     # Relabel features to match new order
     re_label = {k:v for v, k in enumerate(sort_order)}
