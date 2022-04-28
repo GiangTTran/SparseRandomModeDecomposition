@@ -5,11 +5,14 @@ Hosts the helper functions for generating the features used by SRMD
 generate_features(N, t):
     Generates N random features on the time points t.
 
+features_from_parameters(t, tau, frq, phs):
+    Generates features from the given parameters
+
 window(t, w):
     Creates a Gaussian window function of width w on the time points t.
 """
 
-__all__ = ['generate_features', 'window']
+__all__ = ['generate_features', 'features_from_parameters', 'window']
 
 import numpy as np
 
@@ -71,6 +74,36 @@ def generate_features(N, t, max_frq=None, w=default_w, seed=None):
     phs = phs.squeeze()
 
     return  features, (tau, frq, phs)
+
+def features_from_parameters(t, tau, frq, phs, w=default_w):
+    """Generates features from the given parameters
+    
+    Given time-shifts, frequencies, and phases, construct windowed sinusoidal
+    features sampled at the time point t.
+
+    Inputs
+    ------
+    t : numpy array
+        Time points to sampled the features at
+    tau, frq, phs : numpy arrays
+        Time-shifts, frequencies, and phases of the features desired. All arrays
+        should have the same length.
+    w : float, (default: 0.1)
+        Window size of the features in seconds. Defaults to 0.1s or 100ms
+
+    Outputs
+    -------
+    features : numpy array, features.shape == (len(t), len(tau))
+        The value of the features at time points t.
+    """
+    if not len(tau) == len(frq) == len(phs):
+        raise ValueError(f'tau, frq, phs should have the same length. Received '
+                         f'{len(tau)}, {len(frq)}, {len(phs)}')
+
+    tau, frq, phs = map(lambda x: np.reshape(x, (1, -1)), [tau, frq, phs])
+    t = np.reshape(t, (-1, 1))
+    features = window(t-tau, w) * np.sin(twopi*frq*t + phs)
+    return features
 
 def window(t, w=default_w):
     """Creates a truncated gaussian window.
