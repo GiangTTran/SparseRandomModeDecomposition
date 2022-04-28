@@ -224,7 +224,7 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     if cutoff:
         # Label features with frequency above cutoff 0, and below cutoff 1
         log.debug(f'Labelling features by cutoff frequency {cutoff}')
-        labels = np.zeros(m).astype(int)
+        labels = np.zeros(N_features).astype(int)
         labels[frq < cutoff] = 1
     else: # default clustering
         # Cluster near-by features in tau-frq space
