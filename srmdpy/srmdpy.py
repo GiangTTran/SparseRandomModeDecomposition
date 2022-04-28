@@ -88,9 +88,9 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
         Maximum relative error in the representation of the signal. Defaults to
         5%. Should be between [0.01, 0.5] for sensible results.
     threshold : float, (default: None)
-        Bottom percentile of nonzero-coefficients to prune after the
+        Bottom quantile of nonzero-coefficients to prune after the
         coefficients are learned. If None is given, will skip this step. Should
-        be in the range [0,100].
+        be in the range [0, 1].
     frq_scale : float, (default: None)
         Amount to scale the frequencies of the features before the clustering
         algorithm. If None is given, will default to: (t[-1] - t[0]) / max_frq
@@ -204,7 +204,7 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     abs_wghts = np.abs(weights)
     if threshold:
         # Only keep features above the threshold
-        gate = np.percentile(abs_wghts[abs_wghts != 0], threshold)
+        gate = np.quantile(abs_wghts[abs_wghts != 0], threshold)
         keep_index = abs_wghts >= gate
     else:
         # Only keep non-zero weighted features
