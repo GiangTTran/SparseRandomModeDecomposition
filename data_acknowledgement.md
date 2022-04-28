@@ -3,7 +3,7 @@ This research has made use of data or software obtained from the Gravitational W
 
 ### Acknowledgement of Modification
 The data distributed in this repository has been modified from the original data.
-The [raw data](https://www.gw-openscience.org/GW150914data/H-H1_LOSC_4_V2-1126259446-32.txt.gz) was pre-processed similarly to the [BBH Event tutorial](https://www.gw-openscience.org/GW150914data/LOSC_Event_tutorial_GW150914.html).
+The [raw data](https://www.gw-openscience.org/GW150914data/H-H1_LOSC_16_V2-1126259446-32.txt.gz) was pre-processed similarly to the [BBH Event tutorial](https://www.gw-openscience.org/GW150914data/LOSC_Event_tutorial_GW150914.html).
 See the [full data set](https://www.gw-openscience.org/catalog/GWTC-1-confident/single/GW150914/) on the [Gravitational Wave Open Science Center website](https://www.gw-openscience.org/).
 
 ### Citation
