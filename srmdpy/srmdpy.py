@@ -20,7 +20,7 @@ from .constants import twopi, default_w, default_r, default_min_samples
 
 def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
          r=default_r, threshold=None, frq_scale=None, min_samples=default_min_samples,
-         seed=None, n_modes=None, verbosity=0, return_features=False):
+         seed=None, n_modes=None, verbosity=0, return_features=False, cutoff=None):
     """Implimentation of the Sparse Random Mode Decomposition algorithm
 
     **Sparse Random Mode Decomposition**
@@ -113,6 +113,9 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
         If True, will return the learned modes in addition to weights,
         tau, frq, and phs of the features, and the features' label (which mode
         each feature belongs to).
+    cutoff : float, (default: None)
+        If given, will *not* use DBSCAN to cluster features and instead separate
+        features into two modes: features with frequency above and below cutoff.
 
     Example
     -------
@@ -216,12 +219,19 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
 
     log.info(f'There are {len(weights)} nonzero features out of {N_features} '
              f'features or {len(weights)/N_features:.3%}')
-
-    # Cluster near-by features in tau-frq space
-    log.debug('Clustering near-by features in tau-frq space...')
-    X = np.column_stack((tau,frq*frq_scale)) # Package tau-frq into a 2 column matrix
-    labels = DBSCAN(eps=eps, min_samples=min_samples).fit(X).labels_
-    log.debug('...done!')
+    
+    # Cluster features
+    if cutoff:
+        # Label features with frequency above cutoff 0, and below cutoff 1
+        log.debug(f'Labelling features by cutoff frequency {cutoff}')
+        labels = np.zeros(m).astype(int)
+        labels[frq < cutoff] = 1
+    else: # default clustering
+        # Cluster near-by features in tau-frq space
+        log.debug('Clustering near-by features in tau-frq space...')
+        X = np.column_stack((tau,frq*frq_scale)) # Package tau-frq into a 2 column matrix
+        labels = DBSCAN(eps=eps, min_samples=min_samples).fit(X).labels_
+        log.debug('...done!')
 
     # Extract modes by label
     n_labels = len(set(labels)) - (1 if -1 in labels else 0)
