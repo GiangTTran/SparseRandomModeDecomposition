@@ -241,11 +241,7 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
             # Skip features thrown out by DBSCAN
             continue
         mode_index = np.equal(labels, i)
-        _features = features[:,mode_index]
-        _weights = weights[mode_index]
-
-        mode = _features @ _weights
-        modes[:, i] = mode
+        modes[:, i] = features[:,mode_index] @ weights[mode_index]
 
     # Sort modes by their norm in decreasing order
     norms = np.linalg.norm(modes, axis=0)
