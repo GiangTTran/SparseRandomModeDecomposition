@@ -72,7 +72,10 @@ Hosts the helper functions for generating the features used by SRMD
 ```
 generate_features(N, t):
     Generates N random features on the time points t.
-    
+
+features_from_parameters(t, tau, frq, phs):
+    Generates features from the given parameters
+
 window(t, w):
     Creates a Gaussian window function of width w on the time points t.
 ```
