@@ -216,9 +216,9 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     phs = phs[keep_index]
     features = features[:,keep_index]
     weights = weights[keep_index]
-
-    log.info(f'There are {len(weights)} nonzero features out of {N_features} '
-             f'features or {len(weights)/N_features:.3%}')
+    
+    log.info(f'After thresholding, there are {len(weights)} nonzero features '
+             f'out of {N_features} features or {len(weights)/N_features:.3%}')
     
     # Cluster features
     if cutoff:
