@@ -124,8 +124,8 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
     >>> from srmdpy import SRMD
     >>> t = np.linspace(0,1,num=200)
     >>> y = np.cos(2*np.pi*5*t) + np.sin(2*np.pi*20*t)
-    >>> kargs = {'eps':1, 'frq_scale':1, 'seed':314}
-    >>> modes = SRMD(y, t, **kargs)
+    >>> kwargs = {'eps':1, 'frq_scale':1, 'seed':314}
+    >>> modes = SRMD(y, t, **kwargs)
     >>> for i in range(modes.shape[1]):
     >>>     mode_i = modes[:,i]
     >>>     plt.figure(i)
