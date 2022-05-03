@@ -242,16 +242,18 @@ def SRMD(y, t=None, N_features=None, eps=None, *, max_frq=None, w=default_w,
             continue
         mode_index = np.equal(labels, i)
         modes[:, i] = features[:,mode_index] @ weights[mode_index]
+    
+    # Reorder modes by l2-norm for stability
+    if not cutoff: # Do not reorder if a cutoff frequency was given
+        # Sort modes by their norm in decreasing order
+        norms = np.linalg.norm(modes, axis=0)
+        sort_order = np.argsort(norms)[::-1]
+        modes = modes[:,sort_order]
 
-    # Sort modes by their norm in decreasing order
-    norms = np.linalg.norm(modes, axis=0)
-    sort_order = np.argsort(norms)[::-1]
-    modes = modes[:,sort_order]
-
-    # Relabel features to match new order
-    re_label = {k:v for v, k in enumerate(sort_order)}
-    re_label[-1] = -1
-    labels = np.array([re_label[l] for l in labels])
+        # Relabel features to match new order
+        re_label = {k:v for v, k in enumerate(sort_order)}
+        re_label[-1] = -1
+        labels = np.array([re_label[l] for l in labels])
 
     # Merge (sum) extra modes
     if n_modes and n_labels > n_modes:
