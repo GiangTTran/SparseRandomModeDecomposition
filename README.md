@@ -11,15 +11,21 @@ of a signal to decompose the signal into intrinsic mode-like functions.
 
 Easiest method:
 
-> \$ pip install git+https://github.com/GiangTTran/SparseRandomModeDecomposition.git#egg=srmdpy
+```
+pip install git+https://github.com/GiangTTran/SparseRandomModeDecomposition.git#egg=srmdpy
+```
 
 The code can also be accessed by cloning this repository
 
-> \$ git clone <https://github.com/GiangTTran/SparseRandomModeDecomposition>
+```
+git clone <https://github.com/GiangTTran/SparseRandomModeDecomposition>
+```
 
 or downloading the source by clicking `Code -> Download ZIP`, and then installed via
 
-> \$ python setup.py install
+```
+python setup.py install
+```
 
 ## The Algorithm
 
