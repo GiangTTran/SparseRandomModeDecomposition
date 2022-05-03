@@ -45,28 +45,28 @@ def make_colours(n):
 
     return colours
 
-def signal(t, y, title=None, **kargs):
+def signal(t, y, title=None, **kwargs):
     """Basic plotting of a function
 
     Plots a time series y sampled at points t on a new figure.
     """
     fig = plt.figure()
-    plt.plot(t, y, **kargs)
+    plt.plot(t, y, **kwargs)
     if title:
         plt.title(title)
     plt.xlabel('time')
     plt.ylabel('signal')
     plt.show()
 
-def all_modes(t, modes, title='',**kargs):
+def all_modes(t, modes, title='',**kwargs):
     """Plots each mode in a seperate figure
 
     modes.shape[0] should equal len(t), where modes are stored row-wise
     """
     for i in range(modes.shape[1]):
-        signal(t, modes[:,i], title= title+f' {i+1}',**kargs)
+        signal(t, modes[:,i], title= title+f' {i+1}',**kwargs)
 
-def modes_with_cluster(t, modes, tau, frq, labels, **kargs):
+def modes_with_cluster(t, modes, tau, frq, labels, **kwargs):
     """Plots the time-frequency clusters with their matching modes.
 
     The learned time shifts and frequencies are plotted so each cluster has a
@@ -100,7 +100,7 @@ def modes_with_cluster(t, modes, tau, frq, labels, **kargs):
             continue
         signal(t, modes[:,l], title=f'Learned Mode {l+1}', c=colours[l])
 
-def weights(tau, frq, weights, labels=None, title=None, **kargs):
+def weights(tau, frq, weights, labels=None, title=None, **kwargs):
     """Plots the magnitude of nonzero weights in time frequency space
 
     If labels are given, features that were labeled -1 (outliers) will be
@@ -109,17 +109,17 @@ def weights(tau, frq, weights, labels=None, title=None, **kargs):
     
     See top left plot of Figure 1 in SRMD paper for an example.
     """
-    kargs['cmap'] = sns.color_palette('crest', as_cmap=True) #'viridis'
-    kargs['norm'] = matplotlib.colors.LogNorm()
+    kwargs['cmap'] = sns.color_palette('crest', as_cmap=True) #'viridis'
+    kwargs['norm'] = matplotlib.colors.LogNorm()
     weights = np.abs(weights)
 
     fig = plt.figure()
 
     if labels is not None:
         ax = plt.scatter(tau[labels != -1], frq[labels != -1],
-                    c=weights[labels != -1], **kargs)
+                    c=weights[labels != -1], **kwargs)
     else:
-        ax = plt.scatter(tau, frq, c=weights, **kargs)
+        ax = plt.scatter(tau, frq, c=weights, **kwargs)
 
     if title:
         plt.title(title)
