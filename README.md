@@ -68,7 +68,7 @@ SRMD(y, t):
 ```
     
 utils.py: 
-Hosts the helper functions for generating the features used by SRMD
+- Hosts the helper functions for generating the features used by SRMD
 ```
 generate_features(N, t):
     Generates N random features on the time points t.
@@ -81,7 +81,7 @@ window(t, w):
 ```
 
 visualization.py:
-Contains useful plotting functions for visualizating decomposition results.
+- Contains useful plotting functions for visualizating decomposition results.
 ```
 signal(t, y):
     Plots a time series y sampled at time points t.
@@ -99,7 +99,7 @@ weights(tau, frq, weights):
 ```
 
 constants.py:
-Store helpful constants and default values used by SRMD and helper functions.
+- Store helpful constants and default values used by SRMD and helper functions.
 ```
 twopi = 2 * pi
 default_w = 0.1
@@ -109,28 +109,32 @@ default_min_samples = 4
 ### ```examples/```
 
 minimal.ipynb:
-Decomposes a composite signal with two pure sinusoids at 5 Hz and 20 Hz into its two modes.
+- Decomposes a composite signal with two pure sinusoids at 5 Hz and 20 Hz into its two modes.
 
 frequency_estimation.ipynb:
+- Decomposes a composite signal similar to minimal.ipynb. Results are also plotted and the center frequencies are estimated.
 
 graviational.ipynb:
+- Visualizes the time-frequency chirp from a black hole merger
 
 music.ipynb:
-use SRMD_music()
+- Decomposes a flute and guitar clip into each instrument
 
 discontinuous.ipynb:
+- Showcases the visualization tools in srmdpy on a challanging signal. This is similar to the example shown in Section 3.1 of the SRMD paper.
 
 intersecting.ipynb:
-Show all the hyperparameters
+- Showcases all the hyperparameters avalible
 
 ### ```data/```
 synthetic_data.py:
-Creates the synthetic data from the SRMD paper
+- Creates the synthetic data from the SRMD paper
 
 music:
-flute.wav, guitar.wav, both.wav
+- flute.wav, guitar.wav, both.wav
 
-gravitational?:
+gravitational:
+- numerical_gravitational_data.txt, observed_gravitational_data.txt
 
 ## About
 
