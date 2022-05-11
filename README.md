@@ -129,11 +129,11 @@ music.ipynb:
 discontinuous.ipynb:
 - Showcases the visualization tools in srmdpy on a challanging signal. This is similar to the example shown in Section 3.1 of the SRMD paper.
 
-intersecting.ipynb:
-- Showcases all the hyperparameters avalible
+all_parameters.ipynb:
+- Showcases all the hyperparameters avalible on an intersecting signal. This is similar to the example shown in Section 3.2 of the SRMD paper.
 
 ### ```data/```
-synthetic_data.py:
+synthetic.ipynb:
 - Creates the synthetic data from the SRMD paper
 
 music:
