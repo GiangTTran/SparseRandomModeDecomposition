@@ -153,21 +153,7 @@ Feel free to reach out to njericha@uwaterloo.ca if you have any questions or
 just to say *hi*. Any suggestions and contributions are also welcome!
 
 ### Citation
-If you found this package useful in any way, please cite the repository as:
-
-```latex
-@misc{srmdpy,
-  author = {Richardson, Nicholas},
-  title = {Python implimentation of the Sparse Random Mode Decomposition algorithm},
-  year = {2022},
-  publisher = {GitHub},
-  journal = {GitHub Repository},
-  howpublished = {\url{https://github.com/GiangTTran/SparseRandomModeDecomposition}},
-  version = {0.0.1}
-}
-```
-
-and see the [relevant paper](https://arxiv.org/abs/2204.06108):
+If you found this package useful in any way, please cite the [associated paper](https://arxiv.org/abs/2204.06108):
 
 ```latex
 @article{richardson2022srmd,
