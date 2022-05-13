@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A Python implimentation of Sparse Random Mode Decomposition
+A Python implimentation of [Sparse Random Mode Decomposition](https://arxiv.org/abs/2204.06108)
 
 The goal of this algorithm is to provide a sparse time-frequency representation
 of a signal to decompose the signal into intrinsic mode-like functions.
