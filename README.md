@@ -1,5 +1,9 @@
 # SRMD: Sparse Random Mode Decomposition
 
+<p align="center">
+<img src="https://github.com/GiangTTran/SparseRandomModeDecomposition/blob/main/srmd_flowchart.png" alt="SRMD Flowchart" width="500"/>
+</p>
+
 ## Introduction
 
 A Python implimentation of [Sparse Random Mode Decomposition](https://arxiv.org/abs/2204.06108)
